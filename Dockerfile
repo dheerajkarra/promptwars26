@@ -15,6 +15,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application code
 COPY . .
 
+# Run pytest to automatically verify tests during build
+# If tests fail here, the Docker image build stops and Cloud Run aborts the deployment!
+RUN pytest tests/
+
 # Expose the port Cloud Run provides (default 8080)
 EXPOSE 8080
 

@@ -1,0 +1,9 @@
+CLINICAL RECORD
+Name: John Doe
+DOB: 1978-05-12
+Blood Type: O+
+Allergies: Penicillin, Peanuts
+Chronic Illness: Type 2 Diabetes, Hypertension
+Current Medications: Metformin 500mg, Lisinopril 10mg
+Emergency Contact: Jane Doe, Wife, 555-1234
+Warnings: Patient is prone to severe anaphylaxis due to peanut allergy.
