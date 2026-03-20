@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramedic Emergency Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <span class="icon">⚕️</span>
+                    <h1>EMERGENCY<span class="highlight">PROFILE</span></h1>
+                </div>
+                <p class="subtitle">AI-Verified Patient Extractor</p>
+            </div>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <section id="upload-section" class="card fade-in">
+                <h2>Upload Medical Documents</h2>
+                <p>Drag and drop chaotic prescriptions, lab results, and patient IDs here.</p>
+                
+                <form id="upload-form">
+                    <div id="drop-zone">
+                        <div class="drop-zone-content">
+                            <span class="upload-icon">📄</span>
+                            <p><strong>Click to browse</strong> or drag & drop files here.</p>
+                            <span class="supported-formats">Supports PDF, JPG, PNG, TXT</span>
+                        </div>
+                        <input type="file" id="file-input" multiple accept="image/*,.pdf,.txt">
+                    </div>
+                    
+                    <div id="file-list" class="hidden"></div>
+                    
+                    <button type="submit" id="submit-btn" class="btn primary-btn disabled">
+                        Extract Profile <span class="arrow">→</span>
+                    </button>
+                </form>
+            </section>
+
+            <!-- Loading State -->
+            <section id="loading-section" class="hidden">
+                <div class="scanner-container">
+                    <div class="scanner-laser"></div>
+                    <div class="scanner-image"></div>
+                </div>
+                <p class="loading-text">Analyzing documents and verifying critical data...</p>
+            </section>
+
+            <!-- Results Section -->
+            <section id="results-section" class="hidden">
+                <div class="emergency-card fade-in">
+                    <div class="card-header">
+                        <h2>PATIENT DOSSIER</h2>
+                        <span class="badge verified">Verified by Gemini</span>
+                    </div>
+                    
+                    <div class="vital-grid">
+                        <div class="vital-item main-vital">
+                            <span class="label">NAME</span>
+                            <span class="value" id="res-name">--</span>
+                        </div>
+                        <div class="vital-item">
+                            <span class="label">AGE / DOB</span>
+                            <span class="value" id="res-age">--</span>
+                        </div>
+                        <div class="vital-item blood-item">
+                            <span class="label">BLOOD TYPE</span>
+                            <span class="value critical-text" id="res-blood">--</span>
+                        </div>
+                    </div>
+
+                    <div class="critical-warnings hidden" id="critical-warnings-container">
+                        <div class="warning-header">⚠️ CRITICAL WARNINGS</div>
+                        <ul id="res-warnings"></ul>
+                    </div>
+
+                    <div class="info-section alert-section">
+                        <h3>ALLERGIES</h3>
+                        <ul id="res-allergies" class="pill-list empty"><li>None known</li></ul>
+                    </div>
+
+                    <div class="info-section">
+                        <h3>CHRONIC CONDITIONS</h3>
+                        <ul id="res-conditions" class="list"><li>None discovered</li></ul>
+                    </div>
+
+                    <div class="info-section">
+                        <h3>CURRENT MEDICATIONS</h3>
+                        <ul id="res-medications" class="list pill-list-blue"><li>None discovered</li></ul>
+                    </div>
+
+                    <div class="info-section borderless">
+                        <h3>EMERGENCY CONTACTS</h3>
+                        <ul id="res-contacts" class="list"><li>None discovered</li></ul>
+                    </div>
+                    
+                    <div class="card-footer">
+                        <button id="reset-btn" class="btn secondary-btn">Scan New Patient</button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Error State -->
+            <section id="error-section" class="hidden">
+                <div class="error-card">
+                    <span class="error-icon">❌</span>
+                    <h3>Extraction Failed</h3>
+                    <p id="error-message">Unable to process documents.</p>
+                    <button id="retry-btn" class="btn secondary-btn">Try Again</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
